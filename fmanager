@@ -108,7 +108,8 @@ class FManager(QMainWindow):
         newFileAction.triggered.connect(self.newFile)
         toolbar.addAction(newFileAction)
 
-        start_directory = '/home/tata/'  
+        username = os.getenv("USER")
+        home_directory = "/home/{}".format(username)
         self.loadFiles(start_directory)
 
     def loadFiles(self, directory):
@@ -170,6 +171,7 @@ class FManager(QMainWindow):
                 with open(file_name, 'w') as f:
                     f.write('')
                 self.loadFiles(self.current_directory)
+
 
 
 if __name__ == '__main__':
